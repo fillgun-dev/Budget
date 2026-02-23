@@ -76,6 +76,29 @@ export default async function LoginPage(
                         로그인
                     </button>
                 </form>
+
+                {/* 데모 체험 */}
+                <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 p-4 text-center">
+                    <p className="text-sm font-semibold text-indigo-700 dark:text-indigo-300 mb-1">
+                        🎯 데모 계정으로 체험해보세요
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
+                        2024년~2026년 샘플 데이터가 미리 입력되어 있습니다
+                    </p>
+                    <form action={login}>
+                        <input type="hidden" name="email" value="demo@budget-live.app" />
+                        <input type="hidden" name="password" value="Demo1234!" />
+                        <button
+                            type="submit"
+                            className="w-full rounded-md bg-indigo-600 px-3 py-2.5 text-sm font-semibold text-white hover:bg-indigo-500 transition-colors"
+                        >
+                            데모로 바로 체험하기 →
+                        </button>
+                    </form>
+                    <p className="mt-2 text-xs text-gray-400">
+                        demo@budget-live.app · Demo1234!
+                    </p>
+                </div>
             </div>
         </div>
     )
