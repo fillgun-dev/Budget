@@ -23,8 +23,8 @@ export async function createSharedLink(formData: FormData) {
 
     const { start_date, end_date, expiry, show_income, show_summary, show_stacked_chart, display_currency } = parsed.data
 
-    // 추측 불가한 랜덤 토큰 생성
-    const token = crypto.randomUUID().replace(/-/g, '') + crypto.randomUUID().replace(/-/g, '')
+    // 랜덤 토큰 생성 (12자, 16^12 ≈ 281조 가지)
+    const token = crypto.randomUUID().replace(/-/g, '').slice(0, 12)
 
     let expires_at: string | null = null
     if (expiry === '30') {
