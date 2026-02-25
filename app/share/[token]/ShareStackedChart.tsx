@@ -71,7 +71,10 @@ export default function ShareStackedChart({ data, categoryNames, sym, showIncome
                 <ComposedChart data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }} barCategoryGap="25%">
                     <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
                     <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} />
-                    <YAxis tickFormatter={fmtShort} tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} width={40} />
+                    <YAxis yAxisId="left" tickFormatter={fmtShort} tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} width={40} />
+                    {hasIncome && (
+                        <YAxis yAxisId="right" orientation="right" tickFormatter={fmtShort} tick={{ fontSize: 11, fill: '#93c5fd' }} axisLine={false} tickLine={false} width={44} />
+                    )}
                     <Tooltip content={<StackedTooltip sym={sym} />} />
                     {categoryNames.map((name, i) => (
                         <Bar
@@ -79,12 +82,14 @@ export default function ShareStackedChart({ data, categoryNames, sym, showIncome
                             dataKey={name}
                             name={name}
                             stackId="stack"
+                            yAxisId="left"
                             fill={COLORS[i % COLORS.length]}
                             radius={i === categoryNames.length - 1 ? [3, 3, 0, 0] : [0, 0, 0, 0]}
                         />
                     ))}
                     {hasIncome && (
                         <Line
+                            yAxisId="right"
                             dataKey="_income"
                             name="수입"
                             type="monotone"
